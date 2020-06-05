@@ -1,3 +1,6 @@
+"""These functions are really for debugging within Jupyter
+notebook, but I wanted to save them in the repo"""
+
 from PIL import ImageDraw
 
 
