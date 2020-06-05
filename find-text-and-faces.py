@@ -123,7 +123,8 @@ def show_results(images_dict):
             face_images = img_data[FACE_IMAGES_KEY]
             if face_images:
                 contact_sheet = make_contact_sheet(face_images)
-                display(contact_sheet)
+                # display(contact_sheet)  # display() is for use within Jupyter notebook
+                contact_sheet.show()  # Show the image in a pop-up window
             else:
                 print("But there were no faces found in that file!")
 
@@ -132,8 +133,8 @@ def show_results(images_dict):
 
 import datetime
 
-##zip_filename = "readonly/small_img.zip"
-zip_filename = "readonly/smallest.zip"
+zip_filename = "readonly/small_img.zip"
+##zip_filename = "readonly/smallest.zip"
 ##zip_filename = "readonly/images.zip"
 
 print("\n Started run @ {} \n".format(datetime.datetime.now()))
