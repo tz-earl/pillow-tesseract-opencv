@@ -1,11 +1,8 @@
 import zipfile
 
 from PIL import Image
-from PIL import ImageDraw
-
 import pytesseract
 import cv2 as cv
-import numpy as np
 import math
 
 # loading the face detection classifier
@@ -24,8 +21,7 @@ def extract_image_filenames(zip_filename):
         # Get a list of the contents of the archive.
         archive_items = image_archive.infolist()
         for im in archive_items:
-            item_dict = {}
-            item_dict[FULL_PATH_KEY] = image_archive.extract(im)
+            item_dict = {FULL_PATH_KEY: image_archive.extract(im)}
             images_dict[im.filename] = item_dict
 
     return images_dict
@@ -133,8 +129,8 @@ def show_results(images_dict):
 
 import datetime
 
-zip_filename = "readonly/small_img.zip"
-##zip_filename = "readonly/smallest.zip"
+##zip_filename = "readonly/small_img.zip"  # Four images
+zip_filename = "readonly/smallest.zip"  # Just one image
 ##zip_filename = "readonly/images.zip"
 
 print("\n Started run @ {} \n".format(datetime.datetime.now()))
