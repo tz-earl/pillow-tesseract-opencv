@@ -53,7 +53,12 @@ def find_faces(img_filename):
     # The first param is an ndarray of the image.
     # Setting the minSize removes rectangles that are usually too small to be faces.
     # The scaleFactor value was arrived at through trial and error.
-    faces = face_cascade.detectMultiScale(cv_img, minSize=(150, 150), scaleFactor=1.25)
+
+    # Later improvements and experiments:
+    # Removed minSize=(100, 100)
+    # Changed scaleFactor from 1.25 to 1.35
+    # Added minNeighbors=5
+    faces = face_cascade.detectMultiScale(cv_img, scaleFactor=1.35, minNeighbors=5)
 
     # detectMultiScale() returns an ndarray of objects as rectangular bounding boxes.
     return faces
@@ -129,8 +134,8 @@ def show_results(images_dict):
 
 import datetime
 
-##zip_filename = "readonly/small_img.zip"  # Four images
-zip_filename = "readonly/smallest.zip"  # Just one image
+zip_filename = "readonly/small_img.zip"  # Four images
+##zip_filename = "readonly/smallest.zip"  # Just one image
 ##zip_filename = "readonly/images.zip"
 
 print("\n Started run @ {} \n".format(datetime.datetime.now()))
